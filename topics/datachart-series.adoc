@@ -1,0 +1,70 @@
+﻿////
+
+|metadata|
+{
+    "name": "datachart-series",
+    "controlName": ["{DataChartName}"],
+    "tags": ["Charting","Data Binding","Getting Started"],
+    "guid": "3d087135-84b0-4f6e-b3eb-afe7e962e406",  
+    "buildFlags": [],
+    "createdOn": "2014-06-05T19:39:00.6883931Z"
+}
+|metadata|
+////
+
+= Chart Series
+
+This topic introduces the concept of chart's link:{DataChartLink}.series.html[Series] objects and guides you to the discussion of types of series, data binding, and series' requirements.
+
+The link:{DataChartLink}.{DataChartName}.html[{DataChartName}]™ control provides  pick:[xaml,win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}series.html[Series] property (a collection of link:{DataChartLink}.series.html[Series] type)"]  pick:[android=" link:{DataChartLinkBase}~addseries.html[]method"]  that allows adding link:{DataChartLink}.series.html[Series] objects to chart plot area. You can add different chart series and display multiple data sources in the same chart control and thus create composite chart. Each series that is added to the chart should have appropriate binding set to data members and axis types.
+
+== Data Binding
+
+All types of link:{DataChartLink}.series.html[Series] have  pick:[xaml=" link:{DataChartLink}.series{ApiProp}itemssource.html[ItemsSource]"]  pick:[win-forms=" link:{DataChartLink}.series{ApiProp}datasource.html[DataSource]"]  property for binding to data source  pick:[wpf,win-universal="that implements"]   pick:[wpf,win-universal=" link:http://msdn.microsoft.com/en-us/library/system.collections.ienumerable.aspx[IEnumerable]"]   pick:[wpf,win-universal="interface"] . Some series require more than one data column or property for each data item in order to render correctly. Therefore, there is no common data mapping property for all Series. Instead, the process of data mapping to Series is accomplished using the Series object’s unique $$*$$MemberPath properties.
+
+== Series Types
+
+When multiple Series are added to the chart control, each successive series will be layered on top of the previous series starting from the first to the last series. This allows easy composite creation of different types of chart series. However, there are some restrictions on which types of chart series that can be used together. For more information on this please read the appropriate link:datachart-series-types.html[Series Types] and link:datachart-multiple-series.html[Adding Multiple Series] sections.
+
+== Series Requirements
+
+The chart control supports a number of various series and some series have specific requirements that need to be met. Please refer to the link:datachart-series-requirements.html[Series Requirements] article for more information on series requirements.
+
+ifdef::wpf,win-universal[]
+== Legend
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+The link:{DataChartLink}.series{ApiProp}legend.html[Legend] property of a Series determines which link:{DataChartLink}.legend.html[Legend] will list the LegendItem representing the series. And the link:{DataChartLink}.series{ApiProp}title.html[Title] property of the Series is used to set a display name for the Series in its LegendItem.
+endif::wpf,win-universal[]
+
+== Related Topics
+
+This section provides you with useful information about task-based procedures on working with series of the {DataChartName} control.
+
+ifdef::sl,wpf[]
+* link:datachart-creating-custom-series.html[Creating Custom Series]
+
+endif::sl,wpf[]
+
+* link:datachart-multiple-series.html[Adding Multiple Series]
+
+ifdef::sl,wpf,win-phone[]
+* link:datachart-series-data-correlation.html[Series Data Correlation]
+
+endif::sl,wpf,win-phone[]
+
+ifdef::sl,wpf,win-phone[]
+* link:datachart-series-error-bars.html[Series Error Bars]
+
+endif::sl,wpf,win-phone[]
+
+* link:datachart-trend-lines.html[Series Trend Lines]
+
+ifdef::sl,wpf,win-universal[]
+* link:datachart-series-highlighting.html[Series Highlighting]
+
+endif::sl,wpf,win-universal[]
+
+* link:datachart-series-requirements.html[Series Requirements]
+* link:datachart-series-types.html[Series Types]

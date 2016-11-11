@@ -1,0 +1,415 @@
+﻿////
+|metadata|
+{
+    "name": "datachart-radial-pie-series",
+    "controlName": ["{DataChartName}"],
+    "tags": ["Charting","Data Binding","Data Presentation","Sample Data Source"],
+    "guid": "bf906ebd-3585-41b1-8783-c3a32b6fb642",
+    "buildFlags": [],
+    "createdOn": "2014-06-05T19:39:00.547337Z"
+}
+|metadata|
+////
+
+= Radial Pie Series
+
+This topic explains, with code examples, how to use Radial Pie Series in the link:{DataChartLink}.{DataChartName}.html[{DataChartName}]™ control.
+
+== Introduction
+
+Radial Pie Series uses pie slices that extend from the center of chart towards locations of data points. The link:{DataChartLink}.radialpieseries.html[RadialPieSeries] take concepts of categorizing multiple series of data points and wrapping them around on a circle rather than stretching data points along a horizontal line. For more information on this group of series, please refer to the link:datachart-radial-series-overview.html[Radial Series] topic.
+
+== Preview
+
+Figure 1 demonstrates what Radial Pie Series looks like when plotted in the {DataChartName} control.
+
+image::images/xamDataChart_Radial_Series_01.png[]
+
+Figure 1: Sample implementation of a RadialPieSeries
+
+== Data Binding
+
+The code snippet below shows how to bind sample radial data (which is available for download from the link:resources-sample-category-data.html[Sample Category Data] resource) to the RadialPieSeries. The example assumes that you have already configured your project for the {DataChartName} control.
+
+ifdef::xaml[]
+
+*In XAML:*
+
+[source,xaml]
+----
+<ig:{DataChartName} x:Name="DataChart">
+    <ig:{DataChartName}.Resources>
+        <models:CategoryDataSample x:Name="categoryData" />
+        <SolidColorBrush x:Key="AxisStripBrush" Color="LightGray" Opacity=".4" />
+    </ig:{DataChartName}.Resources>
+    <ig:{DataChartName}.Axes>
+        <ig:CategoryAngleAxis x:Name="angleAxis"                                                                        
+                              Interval="1"
+                              Label="{}{Category}" 
+                              ItemsSource="{StaticResource categoryData}">
+        </ig:CategoryAngleAxis>
+        <ig:NumericRadiusAxis x:Name="radiusAxis" 
+                              Strip="{StaticResource AxisStripBrush}"                                      
+                              MinimumValue="0"
+                              MaximumValue="150"
+                              Interval="50"
+                              RadiusExtentScale="0.8"
+                              InnerRadiusExtentScale="0.2">
+        </ig:NumericRadiusAxis>
+    </ig:{DataChartName}.Axes>
+    <ig:{DataChartName}.Series>
+        <ig:RadialPieSeries AngleAxis="{Binding ElementName=angleAxis}"
+                               ValueAxis="{Binding ElementName=radiusAxis}"
+                               ValueMemberPath="Value"
+                               Brush="#7F58A6C7"
+                               MarkerType="None"
+                               Outline="#FF58A6C7"
+                               Thickness="1"
+                               ItemsSource="{StaticResource categoryData}">
+        </ig:RadialPieSeries>
+    </ig:{DataChartName}.Series>
+</ig:{DataChartName}>
+----
+
+endif::xaml[]
+
+ifdef::wpf,win-forms,xamarin[]
+
+*In Visual Basic:*
+
+ifdef::wpf[]
+----
+Dim DataChart As New {DataChartName}()
+Dim categoryDataSample As New CategoryDataSample()
+Dim var As New CategoryAngleAxis()
+categoryAngleAxis.ItemsSource = categoryDataSample
+categoryAngleAxis.Label = "{Category}"
+categoryAngleAxis.Interval = 1
+Dim numericRadiusAxis As New NumericRadiusAxis()
+numericRadiusAxis.MinimumValue = 0
+numericRadiusAxis.MaximumValue = 150
+numericRadiusAxis.Interval = 50
+numericRadiusAxis.RadiusExtentScale = 0.8
+numericRadiusAxis.InnerRadiusExtentScale = 0.2
+DataChart.Axes.Add(categoryAngleAxis)
+DataChart.Axes.Add(numericRadiusAxis)
+Dim series As New RadialPieSeries()
+series.ItemsSource = categoryDataSample 
+ 
+series.ValueMemberPath = "Value"
+series.AngleAxis = categoryAngleAxis
+series.ValueAxis = numericRadiusAxis
+series.MarkerType = MarkerType.None
+series.Thickness = 1
+'...
+DataChart.Series.Add(series)
+----
+endif::wpf[]
+
+ifdef::win-universal[]
+----
+Dim DataChart As New {DataChartName}()
+Dim categoryDataSample As New CategoryDataSample()
+Dim var As New CategoryAngleAxis()
+categoryAngleAxis.ItemsSource = categoryDataSample
+categoryAngleAxis.Label = "{Category}"
+categoryAngleAxis.Interval = 1
+Dim numericRadiusAxis As New NumericRadiusAxis()
+numericRadiusAxis.MinimumValue = 0
+numericRadiusAxis.MaximumValue = 150
+numericRadiusAxis.Interval = 50
+numericRadiusAxis.RadiusExtentScale = 0.8
+numericRadiusAxis.InnerRadiusExtentScale = 0.2
+DataChart.Axes.Add(categoryAngleAxis)
+DataChart.Axes.Add(numericRadiusAxis)
+Dim series As New RadialPieSeries()
+series.ItemsSource = categoryDataSample 
+ 
+series.ValueMemberPath = "Value"
+series.AngleAxis = categoryAngleAxis
+series.ValueAxis = numericRadiusAxis
+series.MarkerType = MarkerType.None
+series.Thickness = 1
+'...
+DataChart.Series.Add(series)
+----
+endif::win-universal[]
+
+ifdef::android[]
+----
+Dim DataChart As New {DataChartName}()
+Dim categoryDataSample As New CategoryDataSample()
+Dim var As New CategoryAngleAxis()
+categoryAngleAxis.ItemsSource = categoryDataSample
+categoryAngleAxis.Label = "{Category}"
+categoryAngleAxis.Interval = 1
+Dim numericRadiusAxis As New NumericRadiusAxis()
+numericRadiusAxis.MinimumValue = 0
+numericRadiusAxis.MaximumValue = 150
+numericRadiusAxis.Interval = 50
+numericRadiusAxis.RadiusExtentScale = 0.8
+numericRadiusAxis.InnerRadiusExtentScale = 0.2
+DataChart.Axes.Add(categoryAngleAxis)
+DataChart.Axes.Add(numericRadiusAxis)
+Dim series As New RadialPieSeries()
+series.ItemsSource = categoryDataSample 
+ 
+series.ValueMemberPath = "Value"
+series.AngleAxis = categoryAngleAxis
+series.ValueAxis = numericRadiusAxis
+series.MarkerType = MarkerType.None
+series.Thickness = 1
+'...
+DataChart.Series.Add(series)
+----
+endif::android[]
+
+ifdef::xamarin[]
+----
+Dim DataChart As New {DataChartName}()
+Dim categoryDataSample As New CategoryDataSample()
+Dim var As New CategoryAngleAxis()
+categoryAngleAxis.ItemsSource = categoryDataSample
+categoryAngleAxis.Label = "{Category}"
+categoryAngleAxis.Interval = 1
+Dim numericRadiusAxis As New NumericRadiusAxis()
+numericRadiusAxis.MinimumValue = 0
+numericRadiusAxis.MaximumValue = 150
+numericRadiusAxis.Interval = 50
+numericRadiusAxis.RadiusExtentScale = 0.8
+numericRadiusAxis.InnerRadiusExtentScale = 0.2
+DataChart.Axes.Add(categoryAngleAxis)
+DataChart.Axes.Add(numericRadiusAxis)
+Dim series As New RadialPieSeries()
+series.ItemsSource = categoryDataSample 
+ 
+series.ValueMemberPath = "Value"
+series.AngleAxis = categoryAngleAxis
+series.ValueAxis = numericRadiusAxis
+series.MarkerType = MarkerType.None
+series.Thickness = 1
+'...
+DataChart.Series.Add(series)
+----
+endif::xamarin[]
+
+ifdef::win-forms[]
+----
+Dim DataChart As New {DataChartName}()
+Dim categoryDataSample As New CategoryDataSample()
+Dim var As New CategoryAngleAxis()
+categoryAngleAxis.ItemsSource = categoryDataSample
+categoryAngleAxis.Label = "{Category}"
+categoryAngleAxis.Interval = 1
+Dim numericRadiusAxis As New NumericRadiusAxis()
+numericRadiusAxis.MinimumValue = 0
+numericRadiusAxis.MaximumValue = 150
+numericRadiusAxis.Interval = 50
+numericRadiusAxis.RadiusExtentScale = 0.8
+numericRadiusAxis.InnerRadiusExtentScale = 0.2
+DataChart.Axes.Add(categoryAngleAxis)
+DataChart.Axes.Add(numericRadiusAxis)
+Dim series As New RadialPieSeries()
+ 
+series.DataSource = categoryDataSample 
+series.ValueMemberPath = "Value"
+series.AngleAxis = categoryAngleAxis
+series.ValueAxis = numericRadiusAxis
+series.MarkerType = MarkerType.None
+series.Thickness = 1
+'...
+DataChart.Series.Add(series)
+----
+endif::win-forms[]
+
+endif::wpf,win-forms,xamarin[]
+
+ifdef::wpf,win-forms,xamarin[]
+
+*In C#:*
+
+ifdef::wpf[]
+----
+var DataChart = new {DataChartName}();
+CategoryDataSample categoryDataSample = new CategoryDataSample();
+var categoryAngleAxis = new CategoryAngleAxis();
+categoryAngleAxis.ItemsSource = categoryDataSample;
+categoryAngleAxis.Label = "{Category}";
+categoryAngleAxis.Interval = 1;
+var numericRadiusAxis = new NumericRadiusAxis();
+numericRadiusAxis.MinimumValue = 0;
+numericRadiusAxis.MaximumValue = 150;
+numericRadiusAxis.Interval = 50;
+numericRadiusAxis.RadiusExtentScale = 0.8;
+numericRadiusAxis.InnerRadiusExtentScale = 0.2;
+DataChart.Axes.Add(categoryAngleAxis);
+DataChart.Axes.Add(numericRadiusAxis);
+RadialPieSeries series = new RadialPieSeries();
+series.ItemsSource = categoryDataSample; 
+ 
+series.ValueMemberPath = "Value";
+series.AngleAxis = categoryAngleAxis;
+series.ValueAxis = numericRadiusAxis; 
+series.MarkerType = MarkerType.None;
+series.Thickness = 1;
+//...                              
+DataChart.Series.Add(series);
+----
+endif::wpf[]
+
+ifdef::win-universal[]
+----
+var DataChart = new {DataChartName}();
+CategoryDataSample categoryDataSample = new CategoryDataSample();
+var categoryAngleAxis = new CategoryAngleAxis();
+categoryAngleAxis.ItemsSource = categoryDataSample;
+categoryAngleAxis.Label = "{Category}";
+categoryAngleAxis.Interval = 1;
+var numericRadiusAxis = new NumericRadiusAxis();
+numericRadiusAxis.MinimumValue = 0;
+numericRadiusAxis.MaximumValue = 150;
+numericRadiusAxis.Interval = 50;
+numericRadiusAxis.RadiusExtentScale = 0.8;
+numericRadiusAxis.InnerRadiusExtentScale = 0.2;
+DataChart.Axes.Add(categoryAngleAxis);
+DataChart.Axes.Add(numericRadiusAxis);
+RadialPieSeries series = new RadialPieSeries();
+series.ItemsSource = categoryDataSample; 
+ 
+series.ValueMemberPath = "Value";
+series.AngleAxis = categoryAngleAxis;
+series.ValueAxis = numericRadiusAxis; 
+series.MarkerType = MarkerType.None;
+series.Thickness = 1;
+//...                              
+DataChart.Series.Add(series);
+----
+endif::win-universal[]
+
+ifdef::android[]
+----
+var DataChart = new {DataChartName}();
+CategoryDataSample categoryDataSample = new CategoryDataSample();
+var categoryAngleAxis = new CategoryAngleAxis();
+categoryAngleAxis.ItemsSource = categoryDataSample;
+categoryAngleAxis.Label = "{Category}";
+categoryAngleAxis.Interval = 1;
+var numericRadiusAxis = new NumericRadiusAxis();
+numericRadiusAxis.MinimumValue = 0;
+numericRadiusAxis.MaximumValue = 150;
+numericRadiusAxis.Interval = 50;
+numericRadiusAxis.RadiusExtentScale = 0.8;
+numericRadiusAxis.InnerRadiusExtentScale = 0.2;
+DataChart.Axes.Add(categoryAngleAxis);
+DataChart.Axes.Add(numericRadiusAxis);
+RadialPieSeries series = new RadialPieSeries();
+series.ItemsSource = categoryDataSample; 
+ 
+series.ValueMemberPath = "Value";
+series.AngleAxis = categoryAngleAxis;
+series.ValueAxis = numericRadiusAxis; 
+series.MarkerType = MarkerType.None;
+series.Thickness = 1;
+//...                              
+DataChart.Series.Add(series);
+----
+endif::android[]
+
+ifdef::xamarin[]
+----
+var DataChart = new {DataChartName}();
+CategoryDataSample categoryDataSample = new CategoryDataSample();
+var categoryAngleAxis = new CategoryAngleAxis();
+categoryAngleAxis.ItemsSource = categoryDataSample;
+categoryAngleAxis.Label = "{Category}";
+categoryAngleAxis.Interval = 1;
+var numericRadiusAxis = new NumericRadiusAxis();
+numericRadiusAxis.MinimumValue = 0;
+numericRadiusAxis.MaximumValue = 150;
+numericRadiusAxis.Interval = 50;
+numericRadiusAxis.RadiusExtentScale = 0.8;
+numericRadiusAxis.InnerRadiusExtentScale = 0.2;
+DataChart.Axes.Add(categoryAngleAxis);
+DataChart.Axes.Add(numericRadiusAxis);
+RadialPieSeries series = new RadialPieSeries();
+series.ItemsSource = categoryDataSample; 
+ 
+series.ValueMemberPath = "Value";
+series.AngleAxis = categoryAngleAxis;
+series.ValueAxis = numericRadiusAxis; 
+series.MarkerType = MarkerType.None;
+series.Thickness = 1;
+//...                              
+DataChart.Series.Add(series);
+----
+endif::xamarin[]
+
+ifdef::win-forms[]
+----
+var DataChart = new {DataChartName}();
+CategoryDataSample categoryDataSample = new CategoryDataSample();
+var categoryAngleAxis = new CategoryAngleAxis();
+categoryAngleAxis.ItemsSource = categoryDataSample;
+categoryAngleAxis.Label = "{Category}";
+categoryAngleAxis.Interval = 1;
+var numericRadiusAxis = new NumericRadiusAxis();
+numericRadiusAxis.MinimumValue = 0;
+numericRadiusAxis.MaximumValue = 150;
+numericRadiusAxis.Interval = 50;
+numericRadiusAxis.RadiusExtentScale = 0.8;
+numericRadiusAxis.InnerRadiusExtentScale = 0.2;
+DataChart.Axes.Add(categoryAngleAxis);
+DataChart.Axes.Add(numericRadiusAxis);
+RadialPieSeries series = new RadialPieSeries();
+ 
+series.DataSource = categoryDataSample; 
+series.ValueMemberPath = "Value";
+series.AngleAxis = categoryAngleAxis;
+series.ValueAxis = numericRadiusAxis; 
+series.MarkerType = MarkerType.None;
+series.Thickness = 1;
+//...                              
+DataChart.Series.Add(series);
+----
+endif::win-forms[]
+
+endif::wpf,win-forms,xamarin[]
+
+ifdef::android[]
+
+*In Java:*
+
+[source,js]
+----
+DataChartView dataChart = new DataChartView(rootView.getContext());
+CategoryDataSample data = new CategoryDataSample();
+CategoryAngleAxis categoryAngleAxis = new CategoryAngleAxis();
+categoryAngleAxis.setDataSource(data);
+categoryAngleAxis.setLabel("Category");
+categoryAngleAxis.setInterval(1);
+NumericRadiusAxis numericRadiusAxis = new NumericRadiusAxis();
+numericRadiusAxis.setMinimumValue(0);
+numericRadiusAxis.setMaximumValue(150);
+numericRadiusAxis.setInterval(50);
+numericRadiusAxis.setRadiusExtentScale(0.8);
+numericRadiusAxis.setInnerRadiusExtentScale(0.2);
+dataChart.addAxis(categoryAngleAxis);
+dataChart.addAxis(numericRadiusAxis);
+RadialPieSeries series = new RadialPieSeries();
+series.setDataSource(data);
+series.setValueMemberPath("Value");
+series.setAngleAxis(categoryAngleAxis);
+series.setValueAxis(numericRadiusAxis);
+series.setMarkerType(MarkerType.NONE);
+series.setThickness(5);
+//...
+dataChart.addSeries(series);
+----
+
+endif::android[]
+
+== Related Topics
+
+* link:datachart-series-requirements.html[Series Requirements]
+* link:datachart-using-category-angle-axis.html[Using Category Angle Axis]
+* link:datachart-using-numeric-radius-axis.html[Using Numeric Radius Axis]

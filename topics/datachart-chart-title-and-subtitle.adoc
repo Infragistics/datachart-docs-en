@@ -1,0 +1,409 @@
+﻿////
+|metadata|
+{
+    "name": "datachart-chart-title-and-subtitle",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["{DataChartName}"],
+    "guid": "0202c82c-63da-456c-9022-76d15ccfac7d",
+    "buildFlags": ["wpf,win-universal","WINFORMS","ANDROID"],
+    "createdOn": "2014-06-05T19:39:00.7224077Z"
+}
+|metadata|
+////
+
+= Chart Title and Subtitle
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides information on using the chart title and subtitle feature of the link:{DataChartLink}.{DataChartName}.html[{DataChartName}™] chart control.
+
+=== Required background
+
+The following topic is a prerequisite to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:datachart-getting-started-with-datachart.html[Getting Started with Data Chart]
+|The _{DataChartName}_ requires a data object model to be mapped to the control’s `DataContext` property. This article will provide a simple data object model but you can create your own and use it with this sample code instead.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<ChartTitleSubtitle,Chart Title and Subtitle>>
+
+** <<Overview,Overview>>
+** <<Preview,Preview>>
+** <<TitleSubtitle,Title and Subtitle>>
+** <<StylingTitleSubtitle,Styling the title and subtitle>>
+** <<Example,Example>>
+
+* <<RelatedContent,Related Content>>
+
+[[ChartTitleSubtitle]]
+== Chart Title and Subtitle
+
+[[Overview]]
+
+=== Overview
+
+The title and subtitle feature of the  _{DataChartName}_   control allows you to add information to the top section of the chart control.
+
+When adding a title or subtitle to the chart control, the content of the chart automatically resizes allowing for the title and subtitle information.
+
+[[Preview]]
+
+=== Preview
+
+The following screenshot is a preview of the chart control with a title and subtitle set.
+
+image::images/xamDataChart_Chart_Title_01.png[]
+
+[[TitleSubtitle]]
+
+=== Title and Subtitle
+
+In order to add a title and subtitle to the chart control there are a set of properties added to options of the  _{DataChartName}_  .
+
+[options="header", cols="a,a,a"]
+|====
+|*Property Name*|*Property Type*|* Description*
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}title.html[Title]
+|`String`
+|Defines the title of the chart.
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitle.html[Subtitle]
+|`String`
+|Defines the subtitle of the chart.
+
+|====
+
+[[StylingTitleSubtitle]]
+
+=== Styling the Title and Subtitle
+
+There are properties provided that allows you to style the text color, the text font style and the text font size of the titles and subtitles.
+
+[options="header", cols="a,a,a"]
+|====
+|*Property Name*|*Property Type*|* Description*
+
+| pick:[wpf,win-universal=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titleforeground.html[TitleForeground]"] pick:[win-forms,android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titletextcolor.html[TitleTextColor]"] 
+|`Brush`
+|Title’s text color.
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontfamily.html[TitleFontFamily]
+|`FontFamily`
+|Title’s font name.
+
+| pick:[wpf,win-universal,win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontsize.html[TitleFontSize]"] pick:[android=" link:{DataChartLinkBase}{ApiProp}titletextsize.html[TitleTextSize]"] 
+|`double`
+|Title’s font size
+
+| pick:[wpf,win-universal,android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontstyle.html[TitleFontStyle]"] pick:[win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titletextstyle.html[TitleTextStyle]"] 
+|`FontStyle`
+|Title’s font style such as italic.
+
+ifdef::wpf,win-universal[]
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontstretch.html[TitleFontStretch]
+|`FontStretch`
+|Title’s font stretch
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal,android[]
+|
+pick:[wpf,win-universal=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontweight.html[TitleFontWeight]"] 
+
+pick:[android=" link:{DataChartLinkBase}{ApiProp}titletypeface.html[TitleTypeface]"] 
+
+|
+ifdef::android[] 
+`Typeface`
+endif::android[] 
+
+ifdef::wpf,win-universal[]
+`TitleFontWeight`
+endif::wpf,win-universal[]
+
+|Title’s font weight such as bold.
+endif::wpf,win-universal,android[]
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlehorizontalalignment.html[TitleHorizontalAlignment]
+|`HorizontalAlignment`
+|Title’s horizontal alignment.
+
+|
+
+ifdef::xaml,win-forms[] 
+
+link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlemargin.html[TitleMargin] 
+
+endif::xaml,win-forms[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}titlebottommargin.html[TitleBottomMargin] 
+
+endif::android[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}titletopmargin.html[TitleTopMargin] 
+
+endif::android[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}titlerightmargin.html[TitleRightMargin] 
+
+endif::android[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}titleleftmargin.html[TitleLeftMargin] 
+
+endif::android[] 
+
+|
+
+ifdef::xaml[] 
+
+`Thickness` 
+
+endif::xaml[] 
+
+ifdef::win-forms[] 
+
+`Padding` 
+
+endif::win-forms[] 
+
+ifdef::android[] 
+
+`double` 
+
+endif::android[] 
+
+|Title’s margin.
+
+| pick:[wpf,win-universal=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitleforeground.html[SubtitleForeground]"] pick:[win-forms,android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitletextcolor.html[SubtitleTextColor]"] 
+|`Brush`
+|Subtitle’s text color.
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontfamily.html[SubtitleFontFamily]
+|`FontFamily`
+|Subtitle’s font name.
+
+| pick:[wpf,win-universal,win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontsize.html[SubtitleFontSize]"] pick:[android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitletextsize.html[SubtitleTextSize]"] 
+|`double`
+|Subtitle’s text size.
+
+| pick:[wpf,win-universal,android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontstyle.html[SubtitleFontStyle]"] pick:[win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitletextstyle.html[SubtitleTextStyle]"] 
+|`FontStyle`
+|Subtitle’s font style such as italic.
+
+ifdef::wpf,win-universal[]
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontstretch.html[SubtitleFontStretch]
+|`FontStretch`
+|Subtitle’s width.
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal,android[]
+|
+pick:[wpf,win-universal=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontweight.html[SubtitleFontWeight]"] 
+
+pick:[android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitletypeface.html[SubtitleTypeface]"] 
+
+|
+`FontWeight` 
+
+`Typeface` 
+
+|Subtitle’s font weight such as bold.
+endif::wpf,win-universal,android[]
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlehorizontalalignment.html[SubtitleHorizontalAlignment]
+|`HorizontalAlignment`
+|Subtitle’s horizontal alignment.
+
+|
+
+ifdef::xaml,win-forms[] 
+
+link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlemargin.html[SubtitleMargin] 
+
+endif::xaml,win-forms[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}subtitlebottommargin.html[SubtitleBottomMargin] 
+
+endif::android[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}subtitletopmargin.html[SubtitleTopMargin] 
+
+endif::android[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}subtitlerightmargin.html[SubtitleRightMargin] 
+
+endif::android[] 
+
+ifdef::android[] 
+
+link:{DataChartLinkBase}{ApiProp}subtitleleftmargin.html[SubtitleLeftMargin] 
+
+endif::android[] 
+
+|
+
+ifdef::xaml[] 
+
+`Thickness` 
+
+endif::xaml[] 
+
+ifdef::win-forms[] 
+
+`Padding` 
+
+endif::win-forms[] 
+
+ifdef::android[] 
+
+`double` 
+
+endif::android[] 
+
+|Subtitle’s margin.
+
+|====
+
+[[Example]]
+
+=== Example
+
+The screenshot, following the table, demonstrates how the chart control with the title and subtitle, looks as a result of the following settings:
+
+[options="header", cols="a,a"]
+|====
+|Property|Value
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}title.html[Title]
+|Energy Use Per County
+
+| pick:[wpf,win-universal=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titleforeground.html[TitleForeground]"] pick:[win-forms,android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titletextcolor.html[TitleTextColor]"] 
+|Red
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontfamily.html[TitleFontFamily]
+|Verdana
+
+| pick:[wpf,win-universal,win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titlefontsize.html[TitleFontSize]"] pick:[android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}titletextsize.html[TitleTextSize]"] 
+|24
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitle.html[Subtitle]
+|Results over a two year period
+
+| pick:[wpf,win-universal=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitleforeground.html[SubtitleForeground]"] pick:[win-forms,android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitletextcolor.html[SubtitleTextColor]"] 
+|Blue
+
+| link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontfamily.html[SubtitleFontFamily]
+|Verdana
+
+| pick:[wpf,win-universal,win-forms=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitlefontsize.html[SubtitleFontSize]"] pick:[android=" link:{DataChartLinkBase}.{DataChartBase}{ApiProp}subtitletextsize.html[SubtitleTextSize]"] 
+|16
+
+|====
+
+image::images/xamDataChart_Chart_Title_02.png[]
+
+Following is the code that implements this example:
+
+ifdef::wpf,win-universal[]
+
+*In XAML:*
+
+[source,xaml]
+----
+<ig:{DataChartName} x:Name="DataChart" 
+                         Title="Energy Use Per Country”
+                         TitleForeground="Red"
+                         TitleFontFamily="Verdana”
+                         TitleFontSize="24"
+                         Subtitle="Results over a two year period”
+                         SubtitleForeground="Red"
+                         SubtitleFontFamily="Verdana”
+                         SubtitleFontSize="16"
+</ig:{DataChartName}>
+----
+
+endif::wpf,win-universal[]
+
+ifdef::android[]
+
+*In Java:*
+
+[source,js]
+----
+chart.setTitle("Energy Use Per Country");
+chart.setTitleTextColor(Brushes.Red);
+chart.setTitleFontFamily("Verdana");
+chart.setTitleTextSize(24);
+chart.setSubtitle("Results over a two year period");
+chart.setSubtitleTextColor(Brushes.Red);
+chart.setSubtitleFontFamily("Verdana");
+chart.setSubtitleTextSize(16);
+----
+
+endif::android[]
+
+[[RelatedContent]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:datachart-getting-started-with-datachart.html[Getting Started with Data Chart]
+|The {DataChartName} requires a data object model to be mapped to the control’s DataContext property. This article will provide a simple data object model but you can create your own and use it with this sample code instead.
+
+|====
+
+ifdef::sl[]
+
+=== Samples
+
+ifdef::sl[]
+
+The following sample provides additional information related to this topic.
+
+[cols="a,a"]
+|====
+ifdef::sl[]
+|Sample|Purpose
+endif::sl[]
+
+ifdef::sl[]
+| link:{SamplesURL}/data-chart/#/chart-title-and-subtitle[Chart Title and Subtitle]
+|The title and subtitle feature of the {DataChartName} control allows you to add information to the top section of the {DataChartName} control
+endif::sl[]
+
+|====
+
+endif::sl[]
+
+endif::sl[]

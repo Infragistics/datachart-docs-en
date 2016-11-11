@@ -1,0 +1,384 @@
+﻿////
+|metadata|
+{
+    "name": "datachart-category-point-series",
+    "controlName": ["{DataChartName}"],
+    "tags": ["Charting","Data Binding","Data Presentation"],
+    "guid": "ba055edf-a657-4212-ab9f-f2d3935015be",
+    "buildFlags": [],
+    "createdOn": "2014-06-05T19:39:00.4522967Z"
+}
+|metadata|
+////
+
+= Point Series
+
+=== Purpose
+
+This topic demonstrates the procedure with code examples, how to display Point series in link:{DataChartLink}.{DataChartName}.html[{DataChartName}]™.
+
+=== Required Background
+
+The following table lists the materials required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+| *Topic* | *Purpose* 
+
+| link:datachart-using-datachart.html[Configuring {DataChartName}]
+|This section is your gateway to important conceptual and task-based information that will help you to use the various features and functionalities provided by the _{DataChartName}_™ control.
+
+|====
+
+=== In This Topic
+
+This topic contains the following sections:
+
+* <<_Ref321919314,Configuring Point Series>>
+* <<_Ref321919323,Introduction>>
+* <<_Ref321919331,Requirements>>
+* <<_Ref321919340,Data Rendering Rules>>
+* <<_Ref321919356,Code Example>>
+* <<_Ref321919425,Related Content>>
+
+[[_Ref321919314]]
+== Configuring Point Series
+
+[[_Ref321919323]]
+
+=== Introduction
+
+The Point Series is one of the chart types in  _{DataChartName}’s_   family of category series. It is designed to render the data as points or markers on the chart. The numeric values correspond to Y axis, and the X axis is used for displaying the labels.
+
+The {DataChartName} supports single or multiple point series objects to be rendered, meaning one collection or more than one collection of data.
+
+The following preview illustrates  _{DataChartName}_   with a single (on left) and multiple (on right) point series objects rendered.
+
+[cols="a,a"]
+|====
+| *Single Point Series* 
+|image::images/xamDataChart_RT_Point_Series_1.png[]
+
+| *Multiple Point Series* 
+|image::images/xamDataChart_RT_Point_Series_2.png[]
+
+|====
+
+[[_Ref321919331]]
+
+=== Requirements
+
+*  *Data Requirements*
+
+Refer to the link:datachart-series-requirements.html[Series Requirements] and link:datachart-category-series-overview.html[Category Series] topics for more information on data series requirements.
+
+The following is a list of data requirements for the Point Series type:
+
+* The data model must contain at least one numeric field for rendering the data.
+* The data model may contain (optional) string or date time field for the labels.
+
+*  *Series Requirements*
+
+Although the  _{DataChartName}_   control supports plotting an unlimited number of various types of series, it is recommended to use the Point Series with similar types of series. Refer to the link:datachart-multiple-series.html[Adding Multiple Series] topic for information on what types of series are recommended with Point Series and how to plot multiple types of series.
+
+[[_Ref321919340]]
+
+=== Data Rendering Rules
+
+The Point Series renders data using the following rules:
+
+* Each member specified as the link:{DataChartLink}.anchoredcategoryseries{ApiProp}valuememberpath.html[ValueMemberPath] property in Point Series is used for data mapping drawn as a separate data point.
+* The string or date time field that is specified as the Label property of data mapping on the  _x-axis_   is used as the category labels. If the Label token is not specified, default labels are used (object name), for example:
+
+`Label``="{}{Country``}"`
+
+In the above code example the `Country` inside the `{}` brackets is the label token. If it is missing, such as `Label="{}{}"`, the object name of the data model is displayed instead.
+
+If the Label property is omitted entirely, the labels are blank.
+
+Category labels are drawn on the  _x-axis_  . Data values are drawn on the  _y-axis_  .
+
+When rendering, multiple series of link:{DataChartLink}.pointseries_members.html[PointSeries] types that share the same  _x-axis_   (see the link:datachart-multiple-series.html[Adding Multiple Series] topic) are rendered in clusters where each series represents its set of cluster of data points.
+
+[[_Ref321919356]]
+== Code Example
+
+[[_Ref321919408]]
+
+=== Description
+
+The multiple series supports more than one series to be defined per chart.
+
+[[_Ref321919417]]
+
+=== Code
+
+ifdef::xaml[]
+
+*In XAML:*
+
+----
+xmlns:local="clr-namespace:SampleApp;assembly=SampleApp"
+----
+
+endif::xaml[]
+
+ifdef::xaml[]
+
+*In XAML:*
+
+ifdef::sl,wpf,win-universal[]
+----
+<ig:{DataChartName} x:Name="DataChart" >
+    <ig:{DataChartName}.Resources>
+        <local:EnergyProductionDataSample x:Key="data" />
+    </ig:{DataChartName}.Resources>
+    <ig:{DataChartName}.Axes>
+        <ig:NumericYAxis x:Name="YAxis"  />
+        <ig:CategoryXAxis x:Name="XAxis" ItemsSource="{StaticResource data}" 
+                       Label="{}{Country}" 
+                       Label="Country" />
+    </ig:{DataChartName}.Axes>
+    <ig:{DataChartName}.Series>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Coal"  
+                       Title="Coal" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Hydro" 
+                       Title="Hydro" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>           
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Nuclear"  
+                       Title="Nuclear" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Gas"  
+                       Title="Gas" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Oil"  
+                       Title="Oil" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+    </ig:{DataChartName}.Series>
+</ig:{DataChartName}>
+----
+endif::sl,wpf,win-universal[]
+
+ifdef::xamarin[]
+----
+<ig:{DataChartName} x:Name="DataChart" >
+    <ig:{DataChartName}.Resources>
+        <local:EnergyProductionDataSample x:Key="data" />
+    </ig:{DataChartName}.Resources>
+    <ig:{DataChartName}.Axes>
+        <ig:NumericYAxis x:Name="YAxis"  />
+        <ig:CategoryXAxis x:Name="XAxis" ItemsSource="{StaticResource data}" 
+                       Label="{}{Country}" 
+                       Label="Country" />
+    </ig:{DataChartName}.Axes>
+    <ig:{DataChartName}.Series>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Coal"  
+                       Title="Coal" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Hydro" 
+                       Title="Hydro" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>           
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Nuclear"  
+                       Title="Nuclear" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Gas"  
+                       Title="Gas" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+        <ig:PointSeries ItemsSource="{StaticResource data}" ValueMemberPath="Oil"  
+                       Title="Oil" 
+                       XAxis="{Binding ElementName=XAxis}"
+                         XAxis="{x:Reference XAxis}" 
+                       YAxis="{Binding ElementName=YAxis}"
+                         YAxis="{x:Reference YAxis}">
+        </ig:PointSeries>
+    </ig:{DataChartName}.Series>
+</ig:{DataChartName}>
+----
+endif::xamarin[]
+
+endif::xaml[]
+
+ifdef::xaml,win-forms[]
+
+*In C#:*
+
+ifdef::win-forms[]
+----
+var data = new EnergyProductionDataSample(); 
+var chart = new {DataChartName}();
+var yAxis = new NumericYAxis();
+var xAxis = new CategoryXAxis();
+xAxis.DataSource = data;
+xAxis.ItemsSource = data;
+xAxis.Label = "{Country}";
+xAxis.Label = "Country";
+var series = new PointSeries();
+series.DataSource = data;
+series.ItemsSource = data;
+series.ValueMemberPath = "Coal";
+series.Title = "Coal";
+series.XAxis = xAxis;
+series.YAxis = yAxis;
+chart.Axes.Add(xAxis);
+chart.Axes.Add(yAxis);
+chart.Series.Add(series);
+----
+endif::win-forms[]
+
+ifdef::xaml[]
+----
+var data = new EnergyProductionDataSample(); 
+var chart = new {DataChartName}();
+var yAxis = new NumericYAxis();
+var xAxis = new CategoryXAxis();
+xAxis.DataSource = data;
+xAxis.ItemsSource = data;
+xAxis.Label = "{Country}";
+xAxis.Label = "Country";
+var series = new PointSeries();
+series.DataSource = data;
+series.ItemsSource = data;
+series.ValueMemberPath = "Coal";
+series.Title = "Coal";
+series.XAxis = xAxis;
+series.YAxis = yAxis;
+chart.Axes.Add(xAxis);
+chart.Axes.Add(yAxis);
+chart.Series.Add(series);
+----
+endif::xaml[]
+
+endif::xaml,win-forms[]
+
+ifdef::xaml,win-forms[]
+
+*In Visual Basic:*
+
+ifdef::win-forms[]
+----
+Dim data As New EnergyProductionDataSample()
+Dim chart As New {DataChartName}()
+Dim yAxis As New NumericYAxis()
+Dim xAxis As New CategoryXAxis()
+xAxis.DataSource = data
+xAxis.ItemsSource = data
+xAxis.Label = "{Country}"
+xAxis.Label = "Country"
+Dim series As New PointSeries()
+series.DataSource = data
+series.ItemsSource = data
+series.ValueMemberPath = "Coal"
+series.Title = "Coal"
+series.XAxis = xAxis
+series.YAxis = yAxis
+chart.Axes.Add(xAxis)
+chart.Axes.Add(yAxis)
+chart.Series.Add(series)
+----
+endif::win-forms[]
+
+ifdef::xaml[]
+----
+Dim data As New EnergyProductionDataSample()
+Dim chart As New {DataChartName}()
+Dim yAxis As New NumericYAxis()
+Dim xAxis As New CategoryXAxis()
+xAxis.DataSource = data
+xAxis.ItemsSource = data
+xAxis.Label = "{Country}"
+xAxis.Label = "Country"
+Dim series As New PointSeries()
+series.DataSource = data
+series.ItemsSource = data
+series.ValueMemberPath = "Coal"
+series.Title = "Coal"
+series.XAxis = xAxis
+series.YAxis = yAxis
+chart.Axes.Add(xAxis)
+chart.Axes.Add(yAxis)
+chart.Series.Add(series)
+----
+endif::xaml[]
+
+endif::xaml,win-forms[]
+
+ifdef::android[]
+
+*In Java:*
+
+[source,js]
+----
+EnergyProductionDataSample data = new EnergyProductionDataSample();
+DataChartView chart = new DataChartView(rootView.getContext());
+NumericYAxis yAxis = new NumericYAxis();
+CategoryXAxis xAxis = new CategoryXAxis();
+xAxis.setDataSource(data);
+xAxis.setLabel("Country");
+PointSeries series = new PointSeries();
+series.setDataSource(data);
+series.setValueMemberPath("Coal");
+series.setTitle("Coal");
+series.setXAxis(xAxis);
+series.setYAxis(yAxis);
+chart.addAxis(xAxis);
+chart.addAxis(yAxis);
+chart.addSeries(series);
+----
+
+endif::android[]
+
+[[_Ref321919425]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+| *Topic* | *Purpose* 
+
+| link:datachart-category-series-overview.html[Category Series]
+|This topic explains various types of Category Series in the _{DataChartName}_ control.
+
+| link:datachart-series-requirements.html[Series Requirements]
+|The _{DataChartName}_ control supports a number of various series, and some of these series require specific axis types and data mapping in order for them to render correctly on the chart plot area.
+
+|====

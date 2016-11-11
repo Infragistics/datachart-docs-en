@@ -1,0 +1,886 @@
+﻿////
+
+|metadata|
+{
+    "name": "datachart-series-requirements",
+    "controlName": ["{DataChartName}"],
+    "tags": ["Application Scenarios","Charting"],
+    "guid": "ef9a7c2d-a9c4-49d0-b6d9-c2ab9c00df50",  
+    "buildFlags": [],
+    "createdOn": "2014-06-05T19:39:00.6953965Z"
+}
+|metadata|
+////
+
+= Series Requirements
+
+The link:{DataChartLink}.{DataChartName}.html[{DataChartName}]™ control supports a number of various series, and some of these series require specific axis types and data mapping in order for them to render correctly on the chart plot area.
+
+== Overview
+
+The topic is organized as follows:
+
+* <<Category,Requirements for Category Series>>
+
+ifdef::wpf,win-universal[]
+* <<Stacked,Requirements for Stacked Series>>
+
+endif::wpf,win-universal[]
+
+* <<Scatter,Requirements for Scatter Series>>
+
+ifdef::wpf,win-universal[]
+* <<PolarAndRadial,Requirements for Polar and Radial Series>>
+
+endif::wpf,win-universal[]
+
+* <<Financial,Requirements for Financial Series>>
+* <<RelatedTopics,Related Topics>>
+
+== Requirements for Category Series
+
+Table 1 below shows what axis types can be used with link:datachart-category-series-overview.html[Category Series] in the {DataChartName} control. This table indicates also the data members that are required by these series.
+
+[options="header", cols="a,a,a,a,a,a,a,a,a", role="document-table-container"]
+|====
+|Series Type| link:{DataChartLink}.numericxaxis.html[NumericXAxis]| link:{DataChartLink}.numericyaxis.html[NumericYAxis]| link:{DataChartLink}.categoryxaxis.html[CategoryXAxis]| link:{DataChartLink}.categoryyaxis.html[CategoryYAxis]| link:{DataChartLink}.categorydatetimexaxis.html[CategoryDateTimeXAxis]| link:{DataChartLink}.anchoredcategoryseries{ApiProp}valuememberpath.html[ValueMemberPath]| link:{DataChartLink}.rangecategoryseries{ApiProp}highmemberpath.html[HighMemberPath]| link:{DataChartLink}.rangecategoryseries{ApiProp}lowmemberpath.html[LowMemberPath]
+
+| link:{DataChartLink}.areaseries.html[AreaSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+ifdef::xaml[]
+| link:{DataChartLink}.barseries.html[BarSeries]
+|X
+|
+|
+|X
+|
+|X
+|
+|
+endif::xaml[]
+
+| link:{DataChartLink}.columnseries.html[ColumnSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.lineseries.html[LineSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.pointseries.html[PointSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.rangeareaseries.html[RangeAreaSeries]
+|
+|X
+|X
+|
+|X
+|
+|X
+|X
+
+| link:{DataChartLink}.rangecolumnseries.html[RangeColumnSeries]
+|
+|X
+|X
+|
+|X
+|
+|X
+|X
+
+| link:{DataChartLink}.splineseries.html[SplineSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.splineareaseries.html[SplineAreaSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.stepareaseries.html[StepAreaSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.steplineseries.html[StepLineSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.waterfallseries.html[WaterfallSeries]
+|
+|X
+|X
+|
+|X
+|X
+|
+|
+
+|====
+
+ifdef::wpf,win-universal[]
+== Requirements for Stacked Series
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+Table 1 below shows what axis types can be used with link:datachart-category-series-overview.html[Stacked Series Overview] in the {DataChartName} control. This table indicates also the data members that are required by these series.
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+
+[options="header", cols="a,a,a,a,a,a,a", role="document-table-container"]
+|====
+|Series Type| link:{DataChartLink}.numericxaxis.html[NumericXAxis]| link:{DataChartLink}.numericyaxis.html[NumericYAxis]| link:{DataChartLink}.categoryxaxis.html[CategoryXAxis]| link:{DataChartLink}.categoryyaxis.html[CategoryYAxis]| link:{DataChartLink}.categorydatetimexaxis.html[CategoryDateTimeXAxis]| link:{DataChartLink}.anchoredcategoryseries{ApiProp}valuememberpath.html[ValueMemberPath]
+
+| link:{DataChartLink}.stackedareaseries.html[StackedAreaSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stackedbarseries.html[StackedBarSeries]
+|X
+|
+|
+|X
+|
+|X$$*$$
+
+| link:{DataChartLink}.stackedcolumnseries.html[StackedColumnSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stackedlineseries.html[StackedLineSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stackedsplineseries.html[StackedSplineSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stackedsplineareaseries.html[StackedSplineAreaSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stacked100areaseries.html[Stacked100AreaSeries]
+|
+|X
+|
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stacked100barseries.html[Stacked100BarSeries]
+|X
+|
+|
+|X
+|
+|X$$*$$
+
+| link:{DataChartLink}.stacked100columnseries.html[Stacked100ColumnSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stacked100lineseries.html[Stacked100LineSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stacked100splineseries.html[Stacked100SplineSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+| link:{DataChartLink}.stacked100splineareaseries.html[Stacked100SplineAreaSeries]
+|
+|X
+|X
+|
+|X
+|X$$*$$
+
+|====
+
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+.Note:
+[NOTE]
+====
+For stacked series, the ValueMemberPath property is set on individual StackedFragmentSeries objects through the series object’s Series property instead on the series itself. For more information on data binding, refer to topics for individual series.
+====
+endif::wpf,win-universal[]
+
+== Requirements for Scatter Series
+
+Table 2 below shows what axis types can be used with link:datachart-scatter-series-overview.html[Scatter Series] in the {DataChartName} control. This table indicates also the data members that are required by these series.
+
+[options="header", cols="a,a,a,a,a,a,a,a,a,a", role="document-table-container"]
+|====
+|Series Type| link:{DataChartLink}.numericyaxis.html[NumericYAxis]| link:{DataChartLink}.numericxaxis.html[NumericXAxis]| link:{DataChartLink}.categoryxaxis.html[CategoryXAxis]| link:{DataChartLink}.categorydatetimexaxis.html[CategoryDateTimeXAxis]| link:{DataChartLink}.scatterbase{ApiProp}xmemberpath.html[XMemberPath]| link:{DataChartLink}.scatterbase{ApiProp}ymemberpath.html[YMemberPath]| link:{DataChartLink}.bubbleseries{ApiProp}labelmemberpath.html[LabelMemberPath]| link:{DataChartLink}.bubbleseries{ApiProp}fillmemberpath.html[FillMemberPath]| link:{DataChartLink}.bubbleseries{ApiProp}radiusmemberpath.html[RadiusMemberPath]
+
+| link:{DataChartLink}.scatterseries.html[ScatterSeries]
+|X
+|X
+|
+|
+|X
+|X
+|
+|
+|
+
+| link:{DataChartLink}.scatterlineseries.html[ScatterLineSeries]
+|X
+|X
+|
+|
+|X
+|X
+|
+|
+|
+
+| link:{DataChartLink}.scattersplineseries.html[ScatterSplineSeries]
+|X
+|X
+|
+|
+|X
+|X
+|
+|
+|
+
+ifdef::wpf,win-universal[]
+| link:{DataChartLink}.highdensityscatterseries.html[HighDensityScatterSeries]
+|X
+|X
+|
+|
+|X
+|X
+|
+|
+|
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal,android,win-forms[]
+| link:{DataChartLink}.bubbleseries.html[BubbleSeries]
+|X
+|X
+|
+|
+|X
+|X
+|X
+|X
+|X
+endif::wpf,win-universal,android,win-forms[]
+
+|====
+
+ifdef::wpf,win-universal[]
+== Requirements for Polar and Radial Series
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+Table 3 below shows what axis types can be used with link:datachart-polar-series-overview.html[Polar Series] and link:datachart-radial-series-overview.html[Radial Series] in the {DataChartName} control. This table indicates also the data members that are required by these series.
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+
+[options="header", cols="a,a,a,a,a,a,a", role="document-table-container"]
+|====
+|Series Type| link:{DataChartLink}.numericradiusaxis.html[NumericRadiusAxis]| link:{DataChartLink}.numericangleaxis.html[NumericAngleAxis]| link:{DataChartLink}.categoryangleaxis.html[CategoryAngleAxis]| link:{DataChartLink}.anchoredradialseries{ApiProp}valuememberpath.html[ValueMemberPath]| link:{DataChartLink}.polarbase{ApiProp}anglememberpath.html[AngleMemberPath]| link:{DataChartLink}.polarbase{ApiProp}radiusmemberpath.html[RadiusMemberPath]
+
+| link:{DataChartLink}.polarareaseries.html[PolarAreaSeries]
+|X
+|X
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.polarlineseries.html[PolarLineSeries]
+|X
+|X
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.polarscatterseries.html[PolarScatterSeries]
+|X
+|X
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.polarsplineareaseries.html[PolarSplineAreaSeries]
+|X
+|X
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.polarsplineseries.html[PolarSplineSeries]
+|X
+|X
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.radialareaseries.html[RadialAreaSeries]
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.radialcolumnseries.html[RadialColumnSeries]
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.radiallineseries.html[RadialLineSeries]
+|X
+|
+|X
+|X
+|
+|
+
+| link:{DataChartLink}.radialpieseries.html[RadialPieSeries]
+|X
+|
+|X
+|X
+|
+|
+
+|====
+
+endif::wpf,win-universal[]
+
+== Requirements for Financial Series
+
+Table 4 below shows what axis types can be used with link:datachart-series-financial-price-series-overview.html[Financial Series] and link:datachart-financial-indicators-overview.html[Financial Indicators] in the {DataChartName} control. This table indicates also the data members that are required by these series.
+
+[options="header", cols="a,a,a,a,a,a,a,a,a,a", role="document-table-container"]
+|====
+|Series Type| link:{DataChartLink}.numericyaxis.html[NumericYAxis]| link:{DataChartLink}.numericxaxis.html[NumericXAxis]| link:{DataChartLink}.categoryxaxis.html[CategoryXAxis]| link:{DataChartLink}.categorydatetimexaxis.html[CategoryDateTimeXAxis]| link:{DataChartLink}.financialseries{ApiProp}highmemberpath.html[HighMemberPath]| link:{DataChartLink}.financialseries{ApiProp}lowmemberpath.html[LowMemberPath]| link:{DataChartLink}.financialseries{ApiProp}openmemberpath.html[OpenMemberPath]| link:{DataChartLink}.financialseries{ApiProp}closememberpath.html[CloseMemberPath]| link:{DataChartLink}.financialseries{ApiProp}volumememberpath.html[VolumeMemberPath]
+
+| link:{DataChartLink}.financialpriceseries.html[FinancialPriceSeries]
+|X
+|
+|X
+|X
+|X
+|X
+|X
+|X
+|
+
+| link:{DataChartLink}.absolutevolumeoscillatorindicator.html[AbsoluteVolumeOscillatorIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|
+|X
+
+| link:{DataChartLink}.accumulationdistributionindicator.html[AccumulationDistributionIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|X
+
+| link:{DataChartLink}.averagedirectionalindexindicator.html[AverageDirectionalIndexIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|X
+|X
+|X
+
+| link:{DataChartLink}.averagetruerangeindicator.html[AverageTrueRangeIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.bollingerbandsoverlay.html[BollingerBandsOverlay]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.bollingerbandwidthindicator.html[BollingerBandWidthIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.chaikinoscillatorindicator.html[ChaikinOscillatorIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|X
+
+| link:{DataChartLink}.chaikinvolatilityindicator.html[ChaikinVolatilityIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|
+|
+
+| link:{DataChartLink}.commoditychannelindexindicator.html[CommodityChannelIndexIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.detrendedpriceoscillatorindicator.html[DetrendedPriceOscillatorIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|
+
+| link:{DataChartLink}.easeofmovementindicator.html[EaseOfMovementIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|
+|X
+
+| link:{DataChartLink}.faststochasticoscillatorindicator.html[FastStochasticOscillatorIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.forceindexindicator.html[ForceIndexIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.fullstochasticoscillatorindicator.html[FullStochasticOscillatorIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.marketfacilitationindexindicator.html[MarketFacilitationIndexIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.massindexindicator.html[MassIndexIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|
+|
+
+| link:{DataChartLink}.medianpriceindicator.html[MedianPriceIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|
+|
+
+| link:{DataChartLink}.moneyflowindexindicator.html[MoneyFlowIndexIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|X
+
+| link:{DataChartLink}.movingaverageconvergencedivergenceindicator.html[MovingAverageConvergenceDivergenceIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.negativevolumeindexindicator.html[NegativeVolumeIndexIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.onbalancevolumeindicator.html[OnBalanceVolumeIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.percentagepriceoscillatorindicator.html[PercentagePriceOscillatorIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|
+|X
+
+| link:{DataChartLink}.percentagevolumeoscillatorindicator.html[PercentageVolumeOscillatorIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|
+|X
+
+| link:{DataChartLink}.positivevolumeindexindicator.html[PositiveVolumeIndexIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.pricevolumetrendindicator.html[PriceVolumeTrendIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|X
+
+| link:{DataChartLink}.pricechanneloverlay.html[PriceChannelOverlay]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|
+|
+
+| link:{DataChartLink}.rateofchangeandmomentumindicator.html[RateOfChangeAndMomentumIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|
+
+| link:{DataChartLink}.relativestrengthindexindicator.html[RelativeStrengthIndexIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|
+
+| link:{DataChartLink}.slowstochasticoscillatorindicator.html[SlowStochasticOscillatorIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.standarddeviationindicator.html[StandardDeviationIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.stochrsiindicator.html[StochRSIIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|
+
+| link:{DataChartLink}.trixindicator.html[TRIXIndicator]
+|X
+|
+|X
+|X
+|
+|
+|
+|X
+|
+
+| link:{DataChartLink}.typicalpriceindicator.html[TypicalPriceIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.ultimateoscillatorindicator.html[UltimateOscillatorIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.weightedcloseindicator.html[WeightedCloseIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+| link:{DataChartLink}.williamspercentrindicator.html[WilliamsPercentRIndicator]
+|X
+|
+|X
+|X
+|X
+|X
+|
+|X
+|
+
+|====
+
+== Related Topics
+
+* link:datachart-category-series-overview.html[Category Series]
+
+ifdef::wpf,win-universal[]
+* link:datachart-polar-series-overview.html[Polar Series]
+
+endif::wpf,win-universal[]
+
+ifdef::wpf,win-universal[]
+* link:datachart-radial-series-overview.html[Radial Series]
+
+endif::wpf,win-universal[]
+
+* link:datachart-scatter-series-overview.html[Scatter Series]
+* link:datachart-series-financial-price-series-overview.html[Financial Series]
+* link:datachart-financial-indicators-overview.html[Financial Indicators]
