@@ -131,7 +131,7 @@ The following Infragistics Libraries will be added to your project:
 
 * {ApiPlatform}Controls.Charts.XamDataChart{ApiVersion}.dll
 * {ApiPlatform}DataVisualization{ApiVersion}.dll
-* {ApiPlatform}v{ProductVersion}.dll
+* {ApiPlatform}{ApiVersion}.dll
 
 [start=4]
 . In the Properties panel, navigate to the DataContext property

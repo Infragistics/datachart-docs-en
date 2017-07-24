@@ -159,7 +159,7 @@ ifdef::xamarin[]
 
 endif::xamarin[]
 
-** {ApiPlatform}v{ProductVersion}.dll
+** {ApiPlatform}{ApiVersion}.dll
 
 ifdef::xamarin[]
 [start=2]

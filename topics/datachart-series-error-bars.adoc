@@ -71,16 +71,16 @@ In {DataChartName}, the length of error bars is calculated using the Infragistic
 |====
 |Assembly|Description
 
-|{ApiPlatform}Math.Calculators.v{ProductVersion}.dll
+|{ApiPlatform}Math.Calculators.{ApiVersion}.dll
 |{ProductName} assembly containing mathematical calculators to compute error bars, correlation, mean, median, variance and many more mathematical values.
 
-|{ApiPlatform}Math.v{ProductVersion}.dll
+|{ApiPlatform}Math.{ApiVersion}.dll
 |{ProductName} assembly containing standard mathematical constants and all-purpose mathematical functions designed to act on a variety of mathematical objects.
 
-|{ApiPlatform}{DataChartAssembly}.v{ProductVersion}.dll
+|{ApiPlatform}{DataChartAssembly}.{ApiVersion}.dll
 |{ProductName} assembly containing the {DataChartName} control and various types of Series and Axes for plotting data.
 
-|{ApiPlatform}v{ProductVersion}.dll
+|{ApiPlatform}{ApiVersion}.dll
 |{ProductName} assembly containing shared functionality used by the Infragistics assemblies.
 
 |====

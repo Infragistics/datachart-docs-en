@@ -118,13 +118,13 @@ To complete the procedure, you need the following:
 * A {PlatformName} {PlatformIDE} application project.
 * References to the following assemblies:
 
-**  _{ApiPlatform}v{ProductVersion}_  
-**  _{ApiPlatform}DataVisualization.{ApiVersion}_  
-**  _{ApiPlatform}Olap{ApiVersion}_  
-**  _{ApiPlatform}Olap.FlatData{ApiVersion}_   (if you are not using flat data, include the respective assembly)
-**  _{ApiPlatform}Controls.Grids.XamPivotGrid{ApiVersion}_   (required only if you want to use the link:{ApiPlatform}controls.grids.xampivotgrid{ApiVersion}~infragistics.controls.grids.xampivotdataselector_members.html[XamPivotDataSelector]™)
-**  _{ApiPlatform}{DataChartAssembly}{ApiVersion}_  
-**  _{ApiPlatform}Controls.Charts.Olap.{ApiVersion}_  
+**  {ApiPlatform}{ApiVersion}dll 
+**  {ApiPlatform}DataVisualization{ApiVersion}.dll  
+**  {ApiPlatform}Olap{ApiVersion}.dll   
+**  {ApiPlatform}Olap.FlatData{ApiVersion}.dll    (if you are not using flat data, include the respective assembly)
+**  {ApiPlatform}Controls.Grids.XamPivotGrid{ApiVersion}.dll    (required only if you want to use the link:{ApiPlatform}controls.grids.xampivotgrid{ApiVersion}~infragistics.controls.grids.xampivotdataselector_members.html[XamPivotDataSelector]™)
+**  {ApiPlatform}{DataChartAssembly}{ApiVersion}.dll   
+**  {ApiPlatform}Controls.Charts.Olap{ApiVersion}.dll   
 
 * The `SalesDataSample` class from the link:salesdatasample.html[Sales Data Sample] resource added to your application
 

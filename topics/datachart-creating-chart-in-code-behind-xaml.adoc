@@ -183,7 +183,7 @@ ifdef::xamarin[]
 endif::xamarin[]
 
 ifdef::wpf,win-universal[]
-** {ApiPlatform}v{ProductVersion}.dll
+** {ApiPlatform}{ApiVersion}.dll
 
 endif::wpf,win-universal[]
 
